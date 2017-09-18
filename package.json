@@ -1,0 +1,19 @@
+{
+  "name": "stats-collector",
+  "version": "1.0.0",
+  "description": "A stats collector website for posting events to, backed by a local database.",
+  "main": "info.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connected-web/stats-collector.git"
+  },
+  "author": "Connected Web",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connected-web/stats-collector/issues"
+  },
+  "homepage": "https://github.com/connected-web/stats-collector#readme"
+}
