@@ -1,2 +1,4 @@
 node_modules
 auth.secret.json
+build/stats.secret.php
+*.log
