@@ -4,7 +4,9 @@
   "description": "A stats collector website for posting events to, backed by a local database.",
   "main": "info.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests available\"",
+    "deploy": "node scripts/upload-all.js",
+    "postinstall": "node scripts/post-install.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/connected-web/stats-collector/issues"
   },
-  "homepage": "https://github.com/connected-web/stats-collector#readme"
+  "homepage": "https://github.com/connected-web/stats-collector#readme",
+  "dependencies": {
+    "ftp-client": "^0.2.2"
+  }
 }
