@@ -14,7 +14,7 @@ var auth = require('../auth.secret.json'),
 client.connect(function () {
     client.upload(['build/*.php', 'build/*.html', 'build/css/*.css'], '/', {
         baseDir: 'build',
-        overwrite: 'older'
+        overwrite: 'all'
     }, function (result) {
         console.log(result);
     });
