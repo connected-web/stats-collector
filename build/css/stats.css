@@ -1,0 +1,25 @@
+.database.results {
+  margin: 40px;
+  line-height: 1.5em;
+  font-family: sans-serif;
+}
+
+.center {
+    height: 100px;
+    position: relative;
+    color: white;
+    background: green
+}
+
+.center heading {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+heading {
+  font-size: 30px;
+  font-family: sans-serif;
+}
