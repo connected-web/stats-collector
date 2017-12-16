@@ -1,18 +1,14 @@
 <?php
 
-require('stats.secret.php');
-
 class Connection {
 
   private $connection = false;
 
-  public function connect() {
-    global $STATS;
-
-    $hostname = $STATS['mysql_hostname'];
-    $database = $STATS['mysql_database'];
-    $username = $STATS['mysql_username'];
-    $password = $STATS['mysql_password'];
+  public function connect($config) {
+    $hostname = $config['mysql_hostname'];
+    $database = $config['mysql_database'];
+    $username = $config['mysql_username'];
+    $password = $config['mysql_password'];
 
     try {
       $this->connection = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
@@ -28,6 +24,10 @@ class Connection {
       "result" => $result,
       "connection" => $this->connection
     );
+  }
+
+  public function query($sql) {
+    return $this->connection->query($sql);
   }
 
   public function listTables() {

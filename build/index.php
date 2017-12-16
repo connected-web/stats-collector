@@ -2,15 +2,19 @@
 
 $NL = "\n";
 
-require('connect.inc.php');
+require('stats.secret.php');
+require('classes/Connection.class.php');
+require('classes/StatsEvent.class.php');
 
 $connection = new Connection();
-$dbc = $connection->connect();
+$statsEvent = new StatsEvent($connection);
+$dbc = $connection->connect($STATS_CONFIG);
 
 $results = array();
 $results[] = '<div class="database results">';
-$results[] = '<p>Database connection: ' . print_r($dbc, true) . '</p>';
+$results[] = '<p>Database connection: ' . $dbc['result'] . '</p>';
 $results[] = '<p>' . print_r($connection->listTables(), true) . '</p>';
+$results[] = '<p>' . print_r($statsEvent->read(), true) . '</p>';
 $results[] = '</div>';
 
 ob_start();

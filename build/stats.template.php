@@ -1,5 +1,5 @@
 <?php
-$STATS = Array(
+$STATS_CONFIG = Array(
   "mysql_hostname" => "localhost",
   "mysql_username" => "username",
   "mysql_password" => "password",
