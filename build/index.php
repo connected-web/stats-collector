@@ -4,12 +4,13 @@ $NL = "\n";
 
 require('connect.inc.php');
 
-$db = connect();
+$connection = new Connection();
+$dbc = $connection->connect();
 
 $results = array();
 $results[] = '<div class="database results">';
-$results[] = '<p>Database connection: ' . print_r($db, true) . '</p>';
-$results[] = '<p>' . print_r(listTables($db['connection']), true) . '</p>';
+$results[] = '<p>Database connection: ' . print_r($dbc, true) . '</p>';
+$results[] = '<p>' . print_r($connection->listTables(), true) . '</p>';
 $results[] = '</div>';
 
 ob_start();
