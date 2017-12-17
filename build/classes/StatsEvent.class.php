@@ -10,26 +10,38 @@ class StatsEvent {
 
   public function read() {
     $sql = 'SELECT * FROM events';
-    $query = $this->connection->query($sql);
-
-    return $query->fetchAll();
+    return $this->connection->query($sql)->fetchAll();
   }
 
-  public function create() {
-    return Array(
-      "message" => 'Create not implemented'
+  public function create($context, $site, $name, $type) {
+    $sql = "INSERT INTO `events` (`id`, `context`, `datetime`, `site`, `name`, `type`) VALUES (NULL, :context, now(), :site, :name, :type)";
+    $params = Array(
+      ":context" => $context,
+      ":site" => $site,
+      ":name" => $name,
+      ":type" => $type
     );
+    $this->connection->query($sql, $params);
+    return $this->connection->lastInsertId();
   }
 
-  public function update() {
-    return Array(
-      "message" => 'Update not implemented'
+  public function update($id, $context, $site, $name, $type) {
+    $sql = "UPDATE `events` SET `context` = :context, `site` = :site, `name` = :name, `type` = :type WHERE `events`.`id` = :id LIMIT 1";
+    $params = Array(
+      ":id" => $id,
+      ":context" => $context,
+      ":site" => $site,
+      ":name" => $name,
+      ":type" => $type
     );
+    return $this->connection->query($sql, $params);
   }
 
-  public function delete() {
-    return Array(
-      "message" => 'Delete not implemented'
+  public function delete($id) {
+    $sql = "DELETE FROM `events` WHERE `id`=:id LIMIT 1";
+    $params = Array(
+      ":id" => $id
     );
+    return $this->connection->query($sql, $params);
   }
 }

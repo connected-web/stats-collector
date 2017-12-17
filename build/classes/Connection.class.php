@@ -26,8 +26,14 @@ class Connection {
     );
   }
 
-  public function query($sql) {
-    return $this->connection->query($sql);
+  public function lastInsertId() {
+    return $this->connection->lastInsertId();
+  }
+
+  public function query($sql, $params = Array()) {
+    $statement = $this->connection->prepare($sql);
+    $statement->execute($params);
+    return $statement;
   }
 
   public function listTables() {
