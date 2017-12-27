@@ -10,7 +10,11 @@ class StatsEvent {
 
   public function read() {
     $sql = 'SELECT * FROM events';
-    return $this->connection->query($sql)->fetchAll();
+    $events = $this->connection->query($sql)->fetchAll(PDO::FETCH_NAMED);
+    foreach ($events as &$event) {
+      $event['context'] = json_decode($event['context']);
+    }
+    return $events;
   }
 
   public function create($context, $site, $name, $type) {
